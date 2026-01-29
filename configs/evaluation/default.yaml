@@ -1,0 +1,25 @@
+# @package evaluation
+
+# Evaluation configuration
+metrics:
+  - mAP_3D
+  - mAP_BEV
+  - NDS
+  - ATE
+  - ASE
+  - AOE
+
+# Detection thresholds
+detection_thresholds: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+
+# NMS configuration
+nms:
+  iou_threshold: 0.1
+  score_threshold: 0.1
+  max_detections: 100
+
+# Visualization
+visualization:
+  save_predictions: true
+  save_visualizations: true
+  max_visualizations: 50

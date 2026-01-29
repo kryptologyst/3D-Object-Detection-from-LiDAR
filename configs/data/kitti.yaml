@@ -1,0 +1,33 @@
+# @package data
+
+_target_: src.data.datasets.KITTIDataset
+
+# Dataset configuration
+dataset_name: "kitti"
+data_dir: "data/raw/kitti"
+processed_dir: "data/processed/kitti"
+
+# Data loading
+batch_size: 4
+num_workers: 4
+pin_memory: true
+
+# Point cloud preprocessing
+point_cloud:
+  max_points: 16384
+  voxel_size: [0.05, 0.05, 0.1]
+  point_cloud_range: [-50.0, -50.0, -3.0, 50.0, 50.0, 1.0]
+
+# Augmentation
+augmentation:
+  enabled: true
+  rotation_range: [-0.78539816, 0.78539816]  # ±45 degrees
+  translation_range: [-2.0, 2.0]
+  scale_range: [0.95, 1.05]
+  flip_probability: 0.5
+
+# Class mapping
+classes:
+  car: 0
+  pedestrian: 1
+  cyclist: 2

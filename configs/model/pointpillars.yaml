@@ -1,0 +1,23 @@
+# @package model
+
+_target_: src.models.pointpillars.PointPillars
+
+# Model architecture
+backbone:
+  _target_: src.models.backbones.PointNetBackbone
+  input_channels: 4  # x, y, z, intensity
+  hidden_channels: [64, 128, 256]
+  output_channels: 256
+
+# Detection head
+detection_head:
+  _target_: src.models.heads.DetectionHead
+  input_channels: 256
+  num_classes: 3  # car, pedestrian, cyclist
+  num_anchors: 2
+
+# Loss configuration
+loss:
+  classification_weight: 1.0
+  regression_weight: 2.0
+  direction_weight: 0.2
